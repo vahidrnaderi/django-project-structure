@@ -16,7 +16,6 @@ from pathlib import Path
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 BASE_DB_DIR = os.path.join(BASE_DIR, 'local_db')
-print(BASE_DB_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -83,6 +82,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DB_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'your-db-name',
+        # 'USER': 'your-db-user',
+        # 'PASSWORD': 'your-db-user-password',
+        # 'HOST': 'your-db-host',
+        # 'PORT': 'your-db-port',
     }
 }
 
@@ -127,3 +132,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Don't use in production
+DEBUG = True

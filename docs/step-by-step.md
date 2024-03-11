@@ -139,7 +139,18 @@ $ touch project_name/apps/app1/services.py \
     ```
 ## 6. Add other structure to project:
 ```
-$ mkdir common deployments docs static
+$ mkdir common deployments docs
+$ touch common/constants.py \
+        common/generics.py \
+        common/helpers.py \
+        common/mixins.py \
+        common/models.py \
+        common/serializers.py
+$ mkdir locale logs media static
+$ touch locale/.gitkeep
+$ touch logs/.gitkeep
+$ touch media/.gitkeep
+$ touch static/.gitkeep
 $ touch pytest.ini
 $ touch docs/CHANGELOG.md \
         docs/CONTRIBUTING.md \
@@ -157,7 +168,7 @@ $ touch deployments/Dockerfile \
         deployments/docker-compose.yml
 $ mkdir local_db scripts
 $ touch local_db/db.sqlite3.example
-$ touch script/entrypoint.sh
+$ touch scripts/entrypoint.sh
 $ touch common/common.py
 ```
 
