@@ -2,11 +2,16 @@ from django.urls import (
     path,
     include
 )
+from django.views import debug
 from .views import redirect_admin
 app_name = "core"
 
-urlpatterns = [    
-    path('', redirect_admin, name='redirect_admin'), 
+urlpatterns = [ 
+                    
+    # Remove or comment next line for real project and uncomment the second line
+    path('', debug.default_urlconf),   
+    # path('', redirect_admin, name='redirect_admin'),
+    
     path('app1/', include('project_name.apps.app1.urls'), name='app1-urls'), 
     path('app2/', include('project_name.apps.app2.urls'), name='app2-urls'), 
     
