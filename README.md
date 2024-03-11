@@ -16,6 +16,72 @@ The project is meant to be easily clone-able, and used as the starter template
 for the next big thing you develop.
 
 
+
+## Project Tree
+``` bash
+.
+├── project_name/
+│   ├── apps/
+│   │   └── app1/               # A django rest app
+│   │       ├── api/
+│   │       │   ├── v1/         # Only the "presentation" layer exists here.
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── serializers.py
+│   │       │   │   ├── urls.py
+│   │       │   │   └── views.py
+│   │       │   ├── v2/         # Only the "presentation" layer exists here.
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── serializers.py
+│   │       │   │   ├── urls.py
+│   │       │   │   └── views.py
+│   │       │   └── __init__.py
+│   │       ├── fixtures/       # Constant "seeders" to populate your database
+│   │       ├── management/
+│   │       │   ├── commands/   # Try and write some database seeders here
+│   │       │   │   └── command.py
+│   │       │   └── __init__.py
+│   │       ├── migrations/
+│   │       │   └── __init__.py
+│   │       ├── templates/      # App-specific templates go here
+│   │       ├── tests/          # All your integration and unit tests for an app go here.
+│   │       │   └── tests.py
+│   │       ├── __init__.py
+│   │       ├── admin.py
+│   │       ├── apps.py
+│   │       ├── models.py
+│   │       ├── services.py     # Your business logic and data abstractions go here.
+│   │       ├── urls.py
+│   │       └── views.py
+│   └── config/
+│       ├── __init__.py
+│       ├── asgi.py
+│       ├── settings.py
+│       ├── urls.py
+│       └── wsgi.py
+├── common/                     # An optional folder containing common "stuff" for the entire project
+├── deployments/                # Isolate Dockerfiles and docker-compose files here.
+├── docs/
+│   ├── CHANGELOG.md
+│   ├── CONTRIBUTING.md
+│   ├── deployment.md
+│   ├── local-development.md
+│   └── swagger.yaml
+├── requirements/
+│   ├── common.txt              # Same for all environments
+│   ├── development.txt         # Only for a development server
+│   ├── local.txt               # Only for a local server (example: docs, performance testing, etc.)
+│   ├── production.txt          # Production only
+│   └── requirements.txt
+├── static/                     # Your static files
+├── .env.example                # An example of your .env configurations. Add necessary comments.
+├── .gitignore                  # https://github.com/github/gitignore/blob/main/Python.gitignore
+├── entrypoint.sh               # Any bootstrapping necessary for your application
+├── LICENSE
+├── manage.py
+├── pytest.ini
+└── README.md
+```
+
 ## References
 - [Two Scoops of Django by Daniel and Audrey Feldroy](https://www.feldroy.com/books/two-scoops-of-django-3-x)
 - [Django Best Practices](https://django-best-practices.readthedocs.io/en/latest/index.html)
