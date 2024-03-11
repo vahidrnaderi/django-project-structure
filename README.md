@@ -22,36 +22,41 @@ for the next big thing you develop.
 .
 ├── project_name/
 │   ├── apps/
-│   │   └── app1/               # A django rest app
-│   │       ├── api/
-│   │       │   ├── v1/         # Only the "presentation" layer exists here.
-│   │       │   │   ├── __init__.py
-│   │       │   │   ├── serializers.py
-│   │       │   │   ├── urls.py
-│   │       │   │   └── views.py
-│   │       │   ├── v2/         # Only the "presentation" layer exists here.
-│   │       │   │   ├── __init__.py
-│   │       │   │   ├── serializers.py
-│   │       │   │   ├── urls.py
-│   │       │   │   └── views.py
-│   │       │   └── __init__.py
-│   │       ├── fixtures/       # Constant "seeders" to populate your database
-│   │       ├── management/
-│   │       │   ├── commands/   # Try and write some database seeders here
-│   │       │   │   └── command.py
-│   │       │   └── __init__.py
-│   │       ├── migrations/
-│   │       │   └── __init__.py
-│   │       ├── templates/      # App-specific templates go here
-│   │       ├── tests/          # All your integration and unit tests for an app go here.
-│   │       │   └── tests.py
-│   │       ├── __init__.py
-│   │       ├── admin.py
-│   │       ├── apps.py
-│   │       ├── models.py
-│   │       ├── services.py     # Your business logic and data abstractions go here.
-│   │       ├── urls.py
-│   │       └── views.py
+│   │   ├── app1/               # A django rest app
+│   │   │   ├── api/
+│   │   │   │   ├── v1/         # Only the "presentation" layer exists here.
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── serializers.py
+│   │   │   │   │   ├── urls.py
+│   │   │   │   │   └── views.py
+│   │   │   │   ├── v2/         # Only the "presentation" layer exists here.
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── serializers.py
+│   │   │   │   │   ├── urls.py
+│   │   │   │   │   └── views.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── fixtures/       # Constant "seeders" to populate your database
+│   │   │   ├── management/
+│   │   │   │   ├── commands/   # Try and write some database seeders here
+│   │   │   │   │   └── command.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── migrations/
+│   │   │   │   └── __init__.py
+│   │   │   ├── templates/      # App-specific templates go here
+│   │   │   ├── tests/          # All your integration and unit tests for an app go here.
+│   │   │   │   └── tests.py
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── apps.py
+│   │   │   ├── models.py
+│   │   │   ├── services.py     # Your business logic and data abstractions go here.
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── app2/               # A django rest app same as app1 structure
+│   │   └── core/               # A django rest core same as app1 structure plus following files
+│   │       ├── constants.py
+│   │       ├── exceptopns.py
+│   │       └── helpers.py
 │   └── config/
 │       ├── __init__.py
 │       ├── asgi.py
@@ -60,6 +65,10 @@ for the next big thing you develop.
 │       └── wsgi.py
 ├── common/                     # An optional folder containing common "stuff" for the entire project
 ├── deployments/                # Isolate Dockerfiles and docker-compose files here.
+│   ├── Dockerfile
+│   ├── Dockerfile_dev
+│   ├── Dockerfile_prod
+│   └── docker-compose.yml
 ├── docs/
 │   ├── CHANGELOG.md
 │   ├── CONTRIBUTING.md
@@ -71,7 +80,8 @@ for the next big thing you develop.
 │   ├── development.txt         # Only for a development server
 │   ├── local.txt               # Only for a local server (example: docs, performance testing, etc.)
 │   ├── production.txt          # Production only
-│   └── requirements.txt
+│   └── requirements.txt 
+├── scripts/                    # Your script files
 ├── static/                     # Your static files
 ├── .env.example                # An example of your .env configurations. Add necessary comments.
 ├── .gitignore                  # https://github.com/github/gitignore/blob/main/Python.gitignore
