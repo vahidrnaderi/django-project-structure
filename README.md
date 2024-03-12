@@ -20,14 +20,14 @@ for the next big thing you develop.
 1. Since this is a template repository, simply hit "Use this template" on GitHub
 and follow the instructions. Otherwise, you can just clone the repo, remove/add
 anything you see fit.
-1. Run the project using `python manage.py runserver` and you should see the
+1. Run the project using `pipenv run python manage.py runserver` and you should see the
 default success page provided by Django at
 [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
 3. Read [Make this structure step_by_step](./docs/step-by-step.md) if you like to make this structure by yourself from the ground.
 
 ### Creating an App
 1. Create a folder with the app name in `apps/`. For example: `poll`
-1. Run `python manage.py startapp poll project_name/apps/poll` from the root directory of the
+1. Run `pipenv run python manage.py startapp poll project_name/apps/poll` from the root directory of the
 project
 
 
