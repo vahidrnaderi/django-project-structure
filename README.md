@@ -9,29 +9,22 @@
 
 
 # Django Project Structure
-This is one of the best practices template/project structure for developing django-based applications -
-either strictly through the `django-rest-framework` or just `django`.
 
-The project is meant to be easily clone-able, and used as the starter template
-for the next big thing you develop.
+This repository provides a well-structured template for developing Django-based applications, whether through `Django Rest Framework` or traditional `Django`.
 
+> The project is meant to be easily clone-able, and used as the starter template for the next big thing you develop.
 
 ## Getting Started
-1. Since this is a template repository, simply hit "Use this template" on GitHub
-and follow the instructions. Otherwise, you can just clone the repo, remove/add
-anything you see fit.
-1. Run the project using `pipenv run python manage.py runserver` and you should see the
-default success page provided by Django at
-[http://127.0.0.1:8000/](http://127.0.0.1:8000/).
-3. Read [Make this structure step_by_step](./docs/step-by-step.md) if you like to make this structure by yourself from the ground.
+1. To use this template, simply click "Use this template" on GitHub and follow the instructions. Alternatively, clone the repository and customize it as needed.
+2. Run the project using `pipenv run python manage.py runserver`. You should see the default success page provided by Django at [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+3. If you prefer to create the structure from scratch, refer to the [step-by-step guide](./docs/step-by-step.md).
 
-### Creating an App
-1. Create a folder with the app name in `apps/`. For example: `poll`
-1. Run `pipenv run python manage.py startapp poll project_name/apps/poll` from the root directory of the
-project
-
+## Creating an App
+1. Create a folder for the app within `apps/`, e.g., `poll`.
+2. Run `pipenv run python manage.py startapp poll project_name/apps/poll` from the project's root directory.
 
 ## Project Tree
+
 ``` bash
 .
 ├── project_name/
@@ -107,45 +100,38 @@ project
 └── README.md
 ```
 
-
 ## Rationale
-Each `app` should be designed in way to be plug-able, that is, dragged and dropped
-into any other project and it’ll work independently.
-
+This project structure aims to facilitate easy cloning and customization for new Django projects. Key features include:
 
 ### `apps` Folder
-* A mother-folder containing all apps for our project. Congruent to any
-JS-framework's `src` folder. If you really wanted to, you could even call it the
-`src` folder. Again, it's up to you.
+
+
+## Rationale
+
+
+
+### 1. `apps` Folder
+* Contains all app-specific code, allowing for easy plug-and-play functionality.
+* Each app follows a consistent structure for models, views, serializers, and tests.
+* Each `app` should be designed in way to be plug-able, that is, dragged and dropped into any other project and it’ll work independently.
+* A mother-folder containing all apps for our project. Congruent to any JS-framework's `src` folder. If you really wanted to, you could even call it the `src` folder. Again, it's up to you.
 * An app can be a django template project, or an rest framework API.
 
-### `services`
+### 2. `services`
+* Business logic is centralized within service modules to maintain separation of concerns.
 * We’ll be writing business logic in services instead of anywhere else.
-* There's a common argument: "Why not just use model managers?", and honestly,
-that's a fair point. However, for our use case, we've often noticed that a single
-service can leverage more zero to many models. Either way, managers or services,
-both work towards the same goal - isolating business logic away from views, and
-brings it closer to the data.
+* There's a common argument: "Why not just use model managers?", and honestly, that's a fair point. However, for our use case, we've often noticed that a single service can leverage more zero to many models. Either way, managers or services, both work towards the same goal - isolating business logic away from views, and brings it closer to the data.
 
-### `api` Folder
-* We like to place all our API components into a package within an app called
-`api`. For example, in this repository it's the `core/api` folder. That
-allows us to isolate our API components in a consistent location. If
-we were to put it in the root of our app, then we would end up with a huge list
-of API-specific modules in the general area of the app. That's without getting
-into the mess of API versioning.
+### 3. `api` Folder
+* Houses API components for each app, promoting organization and versioning.
+* Supports multiple API versions, enabling smooth transitions and updates.
+* We like to place all our API components into a package within an app called `api`. For example, in this repository it's the `core/api` folder. That allows us to isolate our API components in a consistent location. If we were to put it in the root of our app, then we would end up with a huge list of API-specific modules in the general area of the app. That's without getting into the mess of API versioning.
 
-For projects with a lot of small, interconnecting apps, it can be hard to hunt
-down where a particular API view lives. In contrast to placing all API code
-within each relevant app, sometimes it makes more sense to build an app
-specifically for the API. This is where all the serializers, renderers, and views
-are placed. Therefore, the name of the app should reflect its API version
+For projects with a lot of small, interconnecting apps, it can be hard to hunt down where a particular API view lives. In contrast to placing all API code within each relevant app, sometimes it makes more sense to build an app specifically for the API. This is where all the serializers, renderers, and views are placed. Therefore, the name of the app should reflect its API version.
 
 
-#### API Versioning
-It might often be necessary to support multiple versions of an API throughout
-the lifetime of a project. Therefore, we're adding in support right from the
-start.
+#### 3-1. API Versioning
+It might often be necessary to support multiple versions of an API throughout the lifetime of a project. Therefore, we're adding in support right from the start.
 
 For different API versions, we're assuming the following will change:
 - Serializers: That is, how the data is presented to a consumer
@@ -169,25 +155,30 @@ Currently we're proposing that major changes to the following, constitutes a new
 1. Usually, in a Django project, you won't need to worry about API versioning
 
 
-### `config`
+### 4. `config`
 * Contains project configuration files, including the primary URL file
 * ~~Contains settings split into `base`, `local`, `production` and `development`.~~.
 Update: As environment specific variables will be handled using environment
 variables, we've deemed it unnecessary to have separate settings files for now.
 
-### `deployments`
+### 5. `deployments`
 * Contains Docker, Docker-Compose and nginx specific files for deploying in
 different environments.
 
 
-### Exception handling
+### 6. Exception handling
 You should probably add a custom exception handler to your project based on
 who consumes your APIs. To learn how to create a custom exception handler,
 you can check out the Django Rest Framework documentation at:
 https://www.django-rest-framework.org/api-guide/exceptions/#custom-exception-handling
 
 
+---
+> **Note:** This project structure is designed for flexibility and scalability, making it suitable for a wide range of Django projects.
+
+
 ## References
+- [Django project structure](https://github.com/saqibur/django-project-structure)
 - [Two Scoops of Django by Daniel and Audrey Feldroy](https://www.feldroy.com/books/two-scoops-of-django-3-x)
 - [Django Best Practices](https://django-best-practices.readthedocs.io/en/latest/index.html)
 - [Cookiecutter Django](https://github.com/cookiecutter/cookiecutter-django)
@@ -195,4 +186,4 @@ https://www.django-rest-framework.org/api-guide/exceptions/#custom-exception-han
 - [Radoslav Georgiev - Django Structure for Scale and Longevity](https://www.youtube.com/watch?v=yG3ZdxBb1oo)
 - [Build APIs You Won't Hate](https://apisyouwonthate.com/books/build-apis-you-wont-hate/)
 - [Tuxedo Style Guides](https://github.com/saqibur/tuxedo)
-- [Django project structure](https://github.com/saqibur/django-project-structure)
+
