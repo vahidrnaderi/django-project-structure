@@ -74,7 +74,10 @@ class BaseModel(models.Model):
         verbose_name=_("Deleted at"), null=True, blank=True, default=None
     )
 
-    is_deleted = models.BooleanField(verbose_name=_("Is deleted"), default=False)
+    is_deleted = models.BooleanField(
+        verbose_name=_("Is deleted"),
+        default=False
+    )
 
     objects = IsDeletedManager()
 
