@@ -21,6 +21,11 @@ from django.urls import (
 )
 
 urlpatterns = [
-    path('', include('project_name.apps.core.urls'), name='core_urls'),
+    # Django Admin Panel
     path('admin/', admin.site.urls),
+    
+    # Apps urls
+    path('', include('project_name.apps.core.urls'), name='apps_core_urls'),
+    path('', include('project_name.apps.app1.urls'), name='apps_app1_urls'),
+    path('', include('project_name.apps.app2.urls'), name='apps_app2_urls'),
 ]
