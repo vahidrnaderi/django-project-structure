@@ -4,10 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = ">=5.0"
-djangorestframework = ">=3.14"
+django = "~=5.0"
+djangorestframework = "~=3.14"
 
 [dev-packages]
+pytest-cov = "~=4.1"
+flake8 = "~=7.0"
 
 [requires]
 python_version = "3.12"
