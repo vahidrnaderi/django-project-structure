@@ -20,13 +20,39 @@ This repository provides a well-structured template for developing Django-based 
 3. If you prefer to create the structure from scratch, refer to the [step-by-step guide](./docs/step-by-step.md).
 
 ## Creating an App
-1. Create a folder for the app within `apps/`, e.g., `poll`.
-2. Run `pipenv run python manage.py startapp poll project_name/apps/poll` from the project's root directory.
+1. Create a folder for the app within `project_name/apps/`, e.g., `app3`.
+2. Run `pipenv run python manage.py startapp app3 project_name/apps/app3` from the project's root directory.
+
+## Start and test your project in docker container
+1. Open your terminal and go to roject_root directory.
+2. Build your image:
+    ```
+    $ docker-compose -f ./deployments/docker-compose.yml build
+    ```
+
+3. To lint your code (developement purpose):
+    ```
+    $ docker-compose -f ./deployments/docker-compose.yml \
+                     run -t --rm django_project_structure \
+                     /bin/bash -c "flake8"
+    ```
+
+4. To run django server and test your project:
+    ```
+    $ docker-compose -f ./deployments/docker-compose.yml up -d
+    ```
+    > Then open http://localhost:8000 in your browser.
+
+5. Stop and remove containers, networks and volumes:
+    ```
+    $ docker-compose -f ./deployments/docker-compose.yml \
+                     down -v --rmi local
+    ```
 
 ## Project Tree
 
 ``` bash
-.
+project_root/
 ├── project_name/
 │   ├── apps/
 │   │   ├── app1/               # A django rest app
@@ -178,7 +204,6 @@ https://www.django-rest-framework.org/api-guide/exceptions/#custom-exception-han
 
 
 ## References
-- [Django project structure](https://github.com/saqibur/django-project-structure)
 - [Two Scoops of Django by Daniel and Audrey Feldroy](https://www.feldroy.com/books/two-scoops-of-django-3-x)
 - [Django Best Practices](https://django-best-practices.readthedocs.io/en/latest/index.html)
 - [Cookiecutter Django](https://github.com/cookiecutter/cookiecutter-django)
@@ -186,4 +211,5 @@ https://www.django-rest-framework.org/api-guide/exceptions/#custom-exception-han
 - [Radoslav Georgiev - Django Structure for Scale and Longevity](https://www.youtube.com/watch?v=yG3ZdxBb1oo)
 - [Build APIs You Won't Hate](https://apisyouwonthate.com/books/build-apis-you-wont-hate/)
 - [Tuxedo Style Guides](https://github.com/saqibur/tuxedo)
+- [Django project structure](https://github.com/saqibur/django-project-structure)
 
