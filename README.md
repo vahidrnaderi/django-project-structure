@@ -53,6 +53,21 @@ This repository provides a well-structured template for developing Django-based 
 
 ``` bash
 project_root/
+├── deployments/                # Isolate Dockerfiles and docker-compose files here.
+│   ├── Dockerfile
+│   ├── Dockerfile_dev
+│   ├── Dockerfile_prod
+│   └── docker-compose.yml
+├── docs/
+│   ├── CHANGELOG.md
+│   ├── CONTRIBUTING.md
+│   ├── deployment.md
+│   ├── local-development.md
+│   └── schema.yml
+├── local_db/ 
+├── locale/ 
+├── logs/ 
+├── media/
 ├── project_name/
 │   ├── apps/
 │   │   ├── app1/               # A django rest app
@@ -71,13 +86,15 @@ project_root/
 │   │   │   ├── fixtures/       # Constant "seeders" to populate your database
 │   │   │   ├── management/
 │   │   │   │   ├── commands/   # Try and write some database seeders here
+│   │   │   │   │   ├── __init__.py
 │   │   │   │   │   └── command.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── migrations/
 │   │   │   │   └── __init__.py
 │   │   │   ├── templates/      # App-specific templates go here
 │   │   │   ├── tests/          # All your integration and unit tests for an app go here.
-│   │   │   │   └── tests.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_app1_name.py
 │   │   │   ├── __init__.py
 │   │   │   ├── admin.py
 │   │   │   ├── apps.py
@@ -90,51 +107,57 @@ project_root/
 │   │       ├── constants.py
 │   │       ├── exceptopns.py
 │   │       └── helpers.py
+│   ├── common/                 # An optional folder containing common "stuff" for the entire project
+│   │   ├── __init__.py
+│   │   ├── common.py
+│   │   ├── constants.py
+│   │   ├── generics.py
+│   │   ├── helpers.py
+│   │   ├── mixins.py
+│   │   ├── models.py
+│   │   └── serializers.py
 │   └── config/
+│       ├── settings
+│       │   ├── __init__.py
+│       │   ├── development.py
+│       │   ├── production.py
+│       │   └── staging.py
 │       ├── __init__.py
 │       ├── asgi.py
-│       ├── settings.py
 │       ├── urls.py
 │       └── wsgi.py
-├── common/                     # An optional folder containing common "stuff" for the entire project
-├── deployments/                # Isolate Dockerfiles and docker-compose files here.
-│   ├── Dockerfile
-│   ├── Dockerfile_dev
-│   ├── Dockerfile_prod
-│   └── docker-compose.yml
-├── docs/
-│   ├── CHANGELOG.md
-│   ├── CONTRIBUTING.md
-│   ├── deployment.md
-│   ├── local-development.md
-│   └── swagger.yaml
 ├── requirements/
 │   ├── common.txt              # Same for all environments
 │   ├── development.txt         # Only for a development server
 │   ├── local.txt               # Only for a local server (example: docs, performance testing, etc.)
 │   ├── production.txt          # Production only
+│   └── requirements-dev.txt 
 │   └── requirements.txt 
 ├── scripts/                    # Your script files
+│   └── entrypoint.sh           # Any bootstrapping necessary for your application
 ├── static/                     # Your static files
+│   ├── css/
+│   ├── images/
+│   └── js/
 ├── .dockerignore
+├── .env
 ├── .env.example                # An example of your .env configurations. Add necessary comments.
+├── .flake8
 ├── .gitignore                  # https://github.com/github/gitignore/blob/main/Python.gitignore
-├── entrypoint.sh               # Any bootstrapping necessary for your application
 ├── LICENSE
-├── manage.py
+├── manage.py               
+├── Pipfile
+├── Pipfile.lock
+├── pyproject.toml
 ├── pytest.ini
-└── README.md
+├── README.md
+├── setup.cfg
+├── setup.py
+└── tox.ini
 ```
 
 ## Rationale
 This project structure aims to facilitate easy cloning and customization for new Django projects. Key features include:
-
-### `apps` Folder
-
-
-## Rationale
-
-
 
 ### 1. `apps` Folder
 * Contains all app-specific code, allowing for easy plug-and-play functionality.
