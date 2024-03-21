@@ -7,7 +7,7 @@ services:
       dockerfile: ./deployments/Dockerfile
       # dockerfile: ./deployments/Dockerfile_dev
       args:
-        - DEV=true
+        - ENVIRONMENT=develpment
     image: django_project_structure
     ports:
       - "8000:8000"

@@ -14,7 +14,7 @@ COPY . /app/
 WORKDIR /app
 EXPOSE 8000
 
-ARG DEV=false
+ARG ENVIRONMENT=production
 
 # For venv:
 # RUN python -m venv /py && \
@@ -36,7 +36,7 @@ RUN apt-get update && \
     pip3 install --upgrade pip && \
     pip3 install pipenv && \
     pipenv lock --clear && \
-    if [ "$DEV" = "true" ]; \
+    if [ "$ENVIRONMENT" = "develpment" ]; \
       then pipenv install --dev --system ; \
       else pipenv install --system ; \
     fi && \
