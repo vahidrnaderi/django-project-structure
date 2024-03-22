@@ -8,11 +8,18 @@ def main():
     """Run administrative tasks."""
 
     if os.getenv('ENVIRONMENT') == 'production':
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project_name.config.settings.production')
+        os.environ.setdefault(
+            'DJANGO_SETTINGS_MODULE',
+            'project_name.config.settings.production',
+        )
         print(f'--> Running manage.py with production environment: {sys.argv}')
     else:
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project_name.config.settings.development')
-        print(f'--> Running manage.py with development environment: {sys.argv}')
+        os.environ.setdefault(
+            'DJANGO_SETTINGS_MODULE',
+            'project_name.config.settings.development',
+        )
+        print(f'--> Running manage.py with \
+            development environment: {sys.argv}')
 
     try:
         from django.core.management import execute_from_command_line

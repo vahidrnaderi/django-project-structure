@@ -27,24 +27,36 @@ urlpatterns = [
     # name='app2-urls'),
 
     # REST API v1
-    path(API_V1_PATH,
-    include('project_name.apps.core.api.v1.urls'),
-    name='core_api_v1_urls'),
-    path(API_V1_PATH,
-    include('project_name.apps.app1.api.v1.urls'),
-    name='app1_api_v1_urls'),
-    path(API_V1_PATH,
-    include('project_name.apps.app2.api.v1.urls'),
-    name='app2_api_v1_urls'),
+    path(
+        API_V1_PATH,
+        include('project_name.apps.core.api.v1.urls'),
+        name='core_api_v1_urls',
+    ),
+    path(
+        API_V1_PATH,
+        include('project_name.apps.app1.api.v1.urls'),
+        name='app1_api_v1_urls',
+    ),
+    path(
+        API_V1_PATH,
+        include('project_name.apps.app2.api.v1.urls'),
+        name='app2_api_v1_urls',
+    ),
 
     # REST API v2
-    path(API_V2_PATH,
-    include('project_name.apps.core.api.v2.urls'),
-    name='core_api_v2_urls'),
-    path(API_V2_PATH,
-    include('project_name.apps.app1.api.v2.urls'),
-    name='app1_api_v2_urls'),
-    path(API_V2_PATH,
-    include('project_name.apps.app2.api.v2.urls'),
-    name='app2_api_v2_urls'),
+    path(
+        API_V2_PATH,
+        include('project_name.apps.core.api.v2.urls'),
+        name='core_api_v2_urls',
+    ),
+    path(
+        API_V2_PATH,
+        include('project_name.apps.app1.api.v2.urls'),
+        name='app1_api_v2_urls',
+    ),
+    path(
+        API_V2_PATH,
+        include('project_name.apps.app2.api.v2.urls'),
+        name='app2_api_v2_urls',
+    ),
 ]
