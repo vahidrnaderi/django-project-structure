@@ -27,25 +27,25 @@ This repository provides a well-structured template for developing Django-based 
 1. Open your terminal and go to roject_root directory.
 2. Build your image:
     ```
-    $ docker-compose -f ./deployments/docker-compose.yml build
+    $ docker compose -f ./deployments/docker-compose.yml build
     ```
 
 3. To lint your code (developement purpose):
     ```
-    $ docker-compose -f ./deployments/docker-compose.yml \
+    $ docker compose -f ./deployments/docker-compose.yml \
                      run -t --rm django_project_structure \
                      /bin/bash -c "flake8"
     ```
 
 4. To run django server and test your project:
     ```
-    $ docker-compose -f ./deployments/docker-compose.yml up -d
+    $ docker compose -f ./deployments/docker-compose.yml up -d
     ```
     > Then open http://localhost:8000 in your browser.
 
 5. Stop and remove containers, networks and volumes:
     ```
-    $ docker-compose -f ./deployments/docker-compose.yml \
+    $ docker compose -f ./deployments/docker-compose.yml \
                      down -v --rmi local
     ```
 
