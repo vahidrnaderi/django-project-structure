@@ -3,6 +3,12 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
+[scripts]
+start = "python manage.py runserver --settings=project_name.config.settings.test"
+dev = "python manage.py runserver --settings=project_name.config.settings.development"
+prod = "python manage.py runserver --settings=project_name.config.settings.production"
+test = "python manage.py test --settings=project_name.config.settings.test --noinput --parallel"
+
 [packages]
 django = "~=5.0"
 djangorestframework = "~=3.14"
