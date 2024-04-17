@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.12-alpine3.19
 
 LABEL maintainer="admin@example.com"
 
@@ -16,34 +16,41 @@ EXPOSE 8000
 
 ARG ENVIRONMENT=production
 
-# For venv:
+# # For venv:
 # RUN python -m venv /py && \
 #     /py/bin/pip install --upgrade pip && \
-#     /pip/bin/pip install -r /tmp/requirements.txt && \
-#     if [ $DEV - "true" ]; \
-#         then /py/bin/pip install -r /tmp/requirements_dev.txt ; \
+#     apk add --update --no-cache postgresql-client && \
+#     apk add --update --no-cache --virtual .tmp-build-deps \
+#         build-base postgresql-dev musl-dev && \
+#     /py/bin/pip install -r /tmp/requirements.txt && \
+#     if [ "$ENVIRONMENT" = "development" ]; \
+#         then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
 #     fi && \
 #     rm -rf /tmp && \
-#     adduer \
-#         --disabld-password \
+#     apk del .tmp-build-deps && \
+#     adduser \
+#         --disabled-password \
 #         --no-create-home \
 #         django-user
 
 # For pipenv:
-RUN apt-get update && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    pip3 install --upgrade pip && \
-    pip3 install pipenv && \
-    pipenv lock --clear && \
-    if [ "$ENVIRONMENT" = "develpment" ]; \
+  RUN pip3 install --no-cache-dir --upgrade pipenv && \
+    # The next 3 lines are for installing postgres adapter
+    apk add --update --no-cache postgresql-client && \
+    apk add --update --no-cache --virtual .tmp-build-deps \
+      build-base postgresql-dev musl-dev && \
+    if [ "$ENVIRONMENT" = "development" ]; \
       then pipenv install --dev --system ; \
       else pipenv install --system ; \
     fi && \
+    pip3 install --no-cache-dir psycopg2 && \
+    rm -rf /tmp && \
+    rm -rf get-pip.py && \
+    apk del .tmp-build-deps && \
     adduser \
-        --disabled-password \
-        --no-create-home \
-        django-user
+      --disabled-password \
+      --no-create-home \
+      django-user
 
 # For venv:
 # ENV PATH="/py/bin:$PATH"
