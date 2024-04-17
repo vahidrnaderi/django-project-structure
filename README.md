@@ -33,8 +33,8 @@ This repository provides a well-structured template for developing Django-based 
 3. To lint your code (developement purpose):
     ```
     $ docker compose -f ./deployments/docker-compose.yml \
-                     run -t --rm django_project_structure \
-                     /bin/bash -c "flake8"
+                     run -t --rm django-project-structure \
+                     sh -c "flake8"
     ```
 
 4. To run django server and test your project:
@@ -43,7 +43,7 @@ This repository provides a well-structured template for developing Django-based 
     ```
     > Then open http://localhost:8000 in your browser.
 
-5. Stop and remove containers, networks and volumes:
+5. Stop and remove images, containers, networks and volumes:
     ```
     $ docker compose -f ./deployments/docker-compose.yml \
                      down -v --rmi local
