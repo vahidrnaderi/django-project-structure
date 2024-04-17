@@ -10,13 +10,14 @@ prod = "python manage.py runserver --settings=project_name.config.settings.produ
 test = "python manage.py test --settings=project_name.config.settings.test --noinput --parallel"
 
 [packages]
-django = "~=5.0"
-djangorestframework = "~=3.14"
+django = "*"
+djangorestframework = "*"
+## Uncomment next line to install it in your virtualenvironment outside the container.
+# psycopg2-binary = "*"
 
 [dev-packages]
-pytest-cov = "~=4.1"
-flake8 = "~=7.0"
+pytest-cov = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.12"
-python_full_version = "3.12.2"
