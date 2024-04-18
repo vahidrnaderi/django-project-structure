@@ -3,9 +3,8 @@ services:
     build:
       context: ../
       dockerfile: ./deployments/Dockerfile
-      # dockerfile: ./deployments/Dockerfile_dev
       args:
-        - ENVIRONMENT=develpment
+        - ENVIRONMENT=development
     image: django-project-structure
     ports:
       - "8000:8000"
@@ -14,7 +13,31 @@ services:
     networks:
       - django-project-structure-network
     command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000"
+      sh -c "python manage.py wait_for_db &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=devuser
+      - DB_PASS=changeme
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+    networks:
+      - django-project-structure-network
+    environment:
+      - POSTGRES_DB=devdb
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=changeme
+
+volumes:
+  dev-db-data:
 
 networks:
   django-project-structure-network:
+  
