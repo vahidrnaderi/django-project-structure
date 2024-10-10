@@ -36,12 +36,14 @@ This repository provides a well-structured template for developing Django-based 
                      run -t --rm django-project-structure \
                      sh -c "flake8"
     ```
+
 4. To make migrations:
     ```
     $ docker compose -f ./deployments/docker-compose.yml \
                      run -t --rm django-project-structure \
                      sh -c "python manage.py makemigration"
     ```
+
 5. To migrate:
     ```
     $ docker compose -f ./deployments/docker-compose.yml \
@@ -50,17 +52,26 @@ This repository provides a well-structured template for developing Django-based 
                             python manage.py migrate"
     ```
 
-6. To run django server and test your project:
+6. To migrate:
+    ```
+    $ docker compose -f ./deployments/docker-compose.yml \
+                     run -t --rm django-project-structure \
+                     sh -c "python manage.py createsuperuser"
+    ```
+
+7. To run django server and test your project:
     ```
     $ docker compose -f ./deployments/docker-compose.yml up -d
     ```
     > Then open http://localhost:8000 in your browser.
+    > Then open http://localhost:8000/admin in your browser.
 
-7. Stop and remove containers and networks:
+8. Stop and remove containers and networks:
     ```
     $ docker compose -f ./deployments/docker-compose.yml down
     ```
-8. Stop and remove containers, networks, images (-v), and volumes (--rmi local):
+
+9. Stop and remove containers, networks, images (-v), and volumes (--rmi local):
     ```
     $ docker compose -f ./deployments/docker-compose.yml \
                      down -v --rmi local
